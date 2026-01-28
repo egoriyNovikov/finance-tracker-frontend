@@ -29,6 +29,13 @@ See [Vite Configuration Reference](https://vite.dev/config/).
 npm install
 ```
 
+## Docker (минимально)
+
+```sh
+docker build -t finance-tracker-frontend .
+docker run --rm -p 8080:80 finance-tracker-frontend
+```
+
 ### Compile and Hot-Reload for Development
 
 ```sh
