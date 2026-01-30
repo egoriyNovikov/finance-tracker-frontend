@@ -29,12 +29,33 @@ See [Vite Configuration Reference](https://vite.dev/config/).
 npm install
 ```
 
-## Docker (минимально)
+## Разработка (без перезапуска Docker)
+
+**Вариант A — локально (рекомендуется):** изменения сразу видны благодаря hot reload.
+
+```sh
+npm install
+npm run dev
+```
+
+Откройте http://localhost:5173
+
+**Вариант B — в Docker:** код монтируется в контейнер, пересборка образа не нужна.
+
+```sh
+docker compose -f docker-compose.dev.yml up
+```
+
+После первого запуска (`npm install` внутри контейнера) правки в `src/` подхватываются автоматически. Откройте http://localhost:5173
+
+## Docker (продакшен-сборка)
 
 ```sh
 docker build -t finance-tracker-frontend .
-docker run --rm -p 8080:80 finance-tracker-frontend
+docker run --rm -p 5173:80 finance-tracker-frontend
 ```
+
+Приложение будет на http://localhost:5173 (порт 80 внутри контейнера).
 
 ### Compile and Hot-Reload for Development
 
